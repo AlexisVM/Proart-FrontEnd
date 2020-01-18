@@ -79,6 +79,7 @@ const CustomSkinMap = withScriptjs(
       }}
     >
       <Marker position={{ lat: 20.567089, lng: -100.411826 }} />
+      <Marker position={{ lat: 20.57840698624402, lng: -100.35181168507485 }} />
     </GoogleMap>
   ))
 );

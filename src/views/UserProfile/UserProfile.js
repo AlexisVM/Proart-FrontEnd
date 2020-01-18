@@ -1,31 +1,21 @@
 import React from "react";
 // @material-ui/core components
-import { makeStyles,withStyles  } from "@material-ui/core/styles";
+import { makeStyles  } from "@material-ui/core/styles";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
-import NativeSelect from '@material-ui/core/NativeSelect';
-import InputBase from '@material-ui/core/InputBase';
-import {
-  MuiPickersUtilsProvider,
-  KeyboardTimePicker,
-  KeyboardDatePicker,
-} from '@material-ui/pickers';
-
 // core components
 import GridItem from "components/Grid/GridItem.js";
 import GridContainer from "components/Grid/GridContainer.js";
-import CustomInput from "components/CustomInput/CustomInput.js";
 import Button from "components/CustomButtons/Button.js";
 import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardAvatar from "components/Card/CardAvatar.js";
 import CardBody from "components/Card/CardBody.js";
 import CardFooter from "components/Card/CardFooter.js";
-import DatePicker from "react-datepicker";
 
 import avatar from "assets/img/corazon.jpg";
 const styles = {
@@ -47,49 +37,13 @@ const styles = {
   }
 };
 const useStyles = makeStyles(styles);
-const gridStyles = makeStyles(theme => ({
-  container: {
-   display: 'grid',
-   gridTemplateColumns: 'repeat(12, 1fr)',
-   gridGap: theme.spacing(3),
-  },
-  margin: {
-    margin: theme.spacing(1),
-  },
-  formControl: {
-    margin: theme.spacing(1),
-    minWidth: 120,
-  },
-  selectEmpty: {
-    marginTop: theme.spacing(2),
-  },
- paper: {
-   padding: theme.spacing(1),
-   textAlign: 'center',
-   color: theme.palette.text.secondary,
-   whiteSpace: 'nowrap',
-   marginBottom: theme.spacing(1),
- },
- divider: {
-   margin: theme.spacing(2, 0),
- },
-}));
 
 export default function UserProfile() {
-  const [state, setState] = React.useState({
-    age: '',
-    name: 'hai',
-  });
   const [gender, setGender] = React.useState('');
   const handleChange = event => {
     setGender(event.target.value);
   };
-  const [selectedDate, setSelectedDate] = React.useState(new Date('2014-08-18T21:11:54'));
-  const handleDateChange = date => {
-    setSelectedDate(date);
-  };
   const classes = useStyles();
-  const gridClasses = gridStyles();
   return (
     <div>
       <GridContainer>
@@ -121,7 +75,12 @@ export default function UserProfile() {
                   <TextField id="email" label="Correo/Email" fullWidth="true"/>
                 </Grid>
                 <Grid item xs={3}>
-                  <TextField id="birthdate" label="Cumpleaños/Birthday" fullWidth="true" type="date" defaultValue="2000-01-01"/>
+                  <TextField
+                      id="birthdate"
+                      label="Cumpleaños/Birthday"
+                      fullWidth="true"
+                      type="date"
+                      defaultValue="2000-01-01"/>
                 </Grid>
                 <Grid item xs={3}>
                   <FormControl  fullWidth="true">

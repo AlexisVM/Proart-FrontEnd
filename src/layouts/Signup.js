@@ -1,5 +1,4 @@
 import React from 'react';
-import { Switch, Route, Redirect } from "react-router-dom";
 
 //Material ui components
 import Avatar from '@material-ui/core/Avatar';
@@ -10,8 +9,8 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
+//import FormControlLabel from '@material-ui/core/FormControlLabel';
+//import Checkbox from '@material-ui/core/Checkbox';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
@@ -19,16 +18,11 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import { sizing } from '@material-ui/system';
+//import { sizing } from '@material-ui/system';
 
 //External library for phone input
 import PhoneInput from 'react-phone-number-input'
 import 'react-phone-number-input/style.css'
-
-import routes from "routes.js";
-
-
-
 
 function Copyright() {
   return (
@@ -42,7 +36,7 @@ function Copyright() {
     </Typography>
   );
 }
-const switchRoutes = (
+/*const switchRoutes = (
   <Switch>
     {routes.map((prop, key) => {
       if (prop.layout === "/signup") {
@@ -58,7 +52,7 @@ const switchRoutes = (
     })}
     <Redirect from="/signup" to="/signup/1" />
   </Switch>
-);
+);*/
 const useStyles = makeStyles(theme => ({
   paper: {
     marginTop: theme.spacing(6),

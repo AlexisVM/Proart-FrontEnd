@@ -1,17 +1,12 @@
-import React from "react";
-// @material-ui/core components
-import { makeStyles } from "@material-ui/core/styles";
+import React, {Component} from 'react'
 // core components
 import GridItem from "components/Grid/GridItem.js";
 import GridContainer from "components/Grid/GridContainer.js";
-import Table from "components/Table/Table.js";
 import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
-import jsPDF from "jspdf";
-import "jspdf-autotable";
-import Button from '@material-ui/core/Button';
-import Upload from 'material-ui-upload/Upload';
+/*To upload files*/
+import {DropzoneArea} from 'material-ui-dropzone'
 
 const styles = {
   cardCategoryWhite: {
@@ -42,32 +37,48 @@ const styles = {
     }
   }
 };
-
-const useStyles = makeStyles(styles);
-
-export default function Payments() {
-  const classes = useStyles();
-  const onFileLoad = (e, file) => console.log(e.target.result, file.name);
-
-  return (
+class Payments extends Component{
+  constructor(props){
+    super(props);
+    this.state = {
+      files: []
+    };
+  }
+  handleChange(files){
+    this.setState({
+      files: files
+    });
+  }
+  render(){
+    return (
     <GridContainer>
       <GridItem xs={12} sm={12} md={12}>
         <Card>
           <CardHeader color="primary">
-            <h4 className={classes.cardTitleWhite}>Información de pagos</h4>
-            <p className={classes.cardCategoryWhite}>
-              Subir en esta sección todos los comprobantes de pagos para tener un registro
-            </p>
+            <h4 style={styles.cardTitleWhite}>Información de pagos</h4>
           </CardHeader>
           <CardBody>
+            <p >
+              Aquí se podrán subir todos los comprobantes de pago ya sea en modalidad de único pago o parcialidades.
+            </p>
 
-            <Button variant="outlined" color="primary">
-              Subir Comprobante
-            </Button>
+                <DropzoneArea
+                    open={this.state.open}
+                    dropzoneText={'Arrastra un archivo o haz click'}
+                    onChange={this.handleChange.bind(this)}
+                    acceptedFiles={['image/jpeg', 'image/png', 'image/bmp']}
+                    showPreviews={false}
+                    showFileNames={true}
+                    filesLimit={5}
+                    maxFileSize={5000000}
+                />
           </CardBody>
         </Card>
       </GridItem>
 
     </GridContainer>
-  );
+    );
+  }
 }
+
+export default Payments;

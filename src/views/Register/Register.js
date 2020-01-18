@@ -4,14 +4,10 @@ import { makeStyles } from "@material-ui/core/styles";
 // core components
 import GridItem from "components/Grid/GridItem.js";
 import GridContainer from "components/Grid/GridContainer.js";
-import Table from "components/Table/Table.js";
 import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
-import jsPDF from "jspdf";
-import "jspdf-autotable";
-import Button from '@material-ui/core/Button';
-import Upload from 'material-ui-upload/Upload';
+
 
 const styles = {
   cardCategoryWhite: {
@@ -47,14 +43,13 @@ const useStyles = makeStyles(styles);
 
 export default function Register() {
   const classes = useStyles();
-  const onFileLoad = (e, file) => console.log(e.target.result, file.name);
-
   return (
     <GridContainer>
       <GridItem xs={12} sm={12} md={12}>
         <Card>
           <CardHeader color="primary">
             <h4 className={classes.cardTitleWhite}>Inscríbete a un curso</h4>
+
           </CardHeader>
           <CardBody>
           </CardBody>
