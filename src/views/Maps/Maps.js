@@ -5,6 +5,8 @@ import {
   GoogleMap,
   Marker
 } from "react-google-maps";
+//import MarkerWithLabel from "react-google-maps/lib/components/addons/MarkerWithLabel";
+
 
 const CustomSkinMap = withScriptjs(
   withGoogleMap(() => (
@@ -78,7 +80,7 @@ const CustomSkinMap = withScriptjs(
         ]
       }}
     >
-      <Marker position={{ lat: 20.567089, lng: -100.411826 }} />
+
       <Marker position={{ lat: 20.57840698624402, lng: -100.35181168507485 }} />
     </GoogleMap>
   ))

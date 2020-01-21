@@ -56,7 +56,7 @@ const ibericaRoutes = [
 
   {
     path: "/maps",
-    name: "Ubicación",
+    name: "Lugares importantes",
     rtlName: "خرائط",
     icon: LocationOn,
     component: Maps,
