@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -12,6 +12,12 @@ import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
+//Redux
+//import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { userActions } from '../actions';
+//import { createSelector } from 'reselect'
+
 
 function Copyright() {
   return (
@@ -57,9 +63,25 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function SignInSide() {
+function SignInSide() {
   const classes = useStyles();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const dispatch = useDispatch()
 
+  function handleEmailChange(e){
+    setEmail(e.target.value);
+  }
+
+  function handlePasswordChange(e){
+    setPassword(e.target.value);
+  }
+  function handleLogin(e){
+    console.log(process.env.REACT_APP_API);
+     if (email && password) {
+            dispatch(userActions.login(email, password));
+        }
+  }
   return (
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
@@ -72,7 +94,7 @@ export default function SignInSide() {
           <Typography component="h1" variant="h5">
             Iniciar Sesión
           </Typography>
-          <form className={classes.form} noValidate>
+          <form className={classes.form} noValidate >
             <TextField
               variant="outlined"
               margin="normal"
@@ -82,6 +104,8 @@ export default function SignInSide() {
               label="Correo Electrónico/Email Address"
               name="email"
               autoComplete="email"
+              value={email}
+              onChange={handleEmailChange}
               autoFocus
             />
             <TextField
@@ -93,6 +117,8 @@ export default function SignInSide() {
               label="Contraseña/Password"
               type="password"
               id="password"
+              value={password}
+              onChange={handlePasswordChange}
               autoComplete="current-password"
             />
             <FormControlLabel
@@ -100,13 +126,12 @@ export default function SignInSide() {
               label="Recuérdame/Remember me"
             />
             <Button
-              type="enviar/submit"
+              //type="submit"
               fullWidth
               variant="contained"
               color="primary"
               className={classes.submit}
-              href="http://localhost:3000/admin/user"
-              target="_self"
+              onClick={handleLogin}
             >
               Sign In
             </Button>
@@ -131,3 +156,19 @@ export default function SignInSide() {
     </Grid>
   );
 }
+
+/*
+function mapState(state) {
+    const { loggingIn } = state.authentication;
+    return { loggingIn };
+}
+
+const actionCreators = {
+    login: userActions.login,
+    logout: userActions.logout
+};
+*/
+
+//const connectedSignInSide = connect(mapState, actionCreators)(SignInSide);
+
+export default SignInSide;
