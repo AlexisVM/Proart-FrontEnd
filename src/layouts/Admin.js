@@ -19,6 +19,9 @@ import bgImage from "assets/img/sidebar-2.jpg";
 import logo from "assets/img/logo-iberica.png";
 import { useSelector } from 'react-redux'
 
+//Redux
+//import { Link } from 'react-router-dom';
+
 let ps;
 
 const switchRoutes = (
