@@ -17,6 +17,7 @@ import styles from "assets/jss/material-dashboard-react/layouts/adminStyle.js";
 
 import bgImage from "assets/img/sidebar-2.jpg";
 import logo from "assets/img/logo-iberica.png";
+import { useSelector } from 'react-redux'
 
 let ps;
 
@@ -43,6 +44,8 @@ const useStyles = makeStyles(styles);
 export default function Admin({ ...rest }) {
   // styles
   const classes = useStyles();
+  const user = useSelector(state => state.authentication.user)
+  console.log(user)
   // ref to help us initialize PerfectScrollbar on windows devices
   const mainPanel = React.createRef();
   // states and functions
@@ -96,7 +99,7 @@ export default function Admin({ ...rest }) {
     <div className={classes.wrapper}>
       <Sidebar
         routes={routes}
-        logoText={""}
+        logoText={user.nombre}
         logo={logo}
         image={image}
         handleDrawerToggle={handleDrawerToggle}
