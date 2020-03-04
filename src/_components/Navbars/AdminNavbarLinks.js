@@ -14,18 +14,14 @@ import Divider from "@material-ui/core/Divider";
 import Person from "@material-ui/icons/Person";
 //import Dashboard from "@material-ui/icons/Dashboard";
 // core components
-import Button from "components/CustomButtons/Button.js";
+import Button from "../CustomButtons/Button.js";
 
-import styles from "assets/jss/material-dashboard-react/components/headerLinksStyle.js";
-import { useDispatch } from "react-redux";
-import { userActions } from "../../actions";
+import styles from "../../Assets/jss/material-dashboard-react/components/headerLinksStyle.js";
 
 const useStyles = makeStyles(styles);
 
 export default function AdminNavbarLinks() {
   const classes = useStyles();
-  const dispatch = useDispatch();
-
   //const [openNotification, setOpenNotification] = React.useState(null);
   const [openProfile, setOpenProfile] = React.useState(null);
   const handleClickProfile = event => {
@@ -38,11 +34,10 @@ export default function AdminNavbarLinks() {
   const handleCloseProfile = () => {
     setOpenProfile(null);
   };
-  const handleLogout = () => {
-    dispatch(userActions.logout());
-  };
   return (
     <div>
+
+
       <div className={classes.manager}>
         <Button
           color={window.innerWidth > 959 ? "transparent" : "white"}
@@ -81,12 +76,10 @@ export default function AdminNavbarLinks() {
               <Paper>
                 <ClickAwayListener onClickAway={handleCloseProfile}>
                   <MenuList role="menu">
+
                     <Divider light />
                     <MenuItem
-                      onClick={() => {
-                        handleLogout();
-                        window.location.href = "http://localhost:8000/login";
-                      }}
+                      onClick={handleCloseProfile}
                       className={classes.dropdownItem}
                     >
                       Salir
