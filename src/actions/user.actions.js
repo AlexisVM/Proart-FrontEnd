@@ -7,6 +7,7 @@ export const userActions = {
   login,
   logout,
   register,
+  getAllTiposDePrograma,
   getAll,
   delete: _delete
 };
@@ -91,6 +92,31 @@ function getAll() {
   }
   function failure(error) {
     return { type: userConstants.GETALL_FAILURE, error };
+  }
+}
+
+//Tipos de programa
+
+function getAllTiposDePrograma() {
+  return dispatch => {
+    dispatch(request());
+
+    userService
+      .getAllTiposDePrograma()
+      .then(
+        items => dispatch(success(items)),
+        error => dispatch(failure(error.toString()))
+      );
+  };
+
+  function request() {
+    return { type: userConstants.GETALL_TIPO_PROGRAMA_REQUEST };
+  }
+  function success(items) {
+    return { type: userConstants.GETALL_TIPO_PROGRAMA_SUCCESS, items };
+  }
+  function failure(error) {
+    return { type: userConstants.GETALL_TIPO_PROGRAMA_FAILURE, error };
   }
 }
 

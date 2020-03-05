@@ -17,8 +17,8 @@ import styles from "assets/jss/material-dashboard-react/layouts/adminStyle.js";
 
 import bgImage from "assets/img/sidebar-2.jpg";
 import logo from "assets/img/logo-iberica.png";
-import { useSelector } from 'react-redux'
-
+import { useSelector, useDispatch } from 'react-redux'
+import { userActions } from "../actions";
 //Redux
 //import { Link } from 'react-router-dom';
 
@@ -47,8 +47,10 @@ const useStyles = makeStyles(styles);
 export default function Admin({ ...rest }) {
   // styles
   const classes = useStyles();
+  //const dispatch = useDispatch();
   const user = useSelector(state => state.authentication.user)
-  console.log(user)
+  
+
   // ref to help us initialize PerfectScrollbar on windows devices
   const mainPanel = React.createRef();
   // states and functions
@@ -82,6 +84,7 @@ export default function Admin({ ...rest }) {
   };
   // initialize and destroy the PerfectScrollbar plugin
   React.useEffect(() => {
+   // dispatch(userActions.getAllTiposDePrograma());
     if (navigator.platform.indexOf("Win") > -1) {
       ps = new PerfectScrollbar(mainPanel.current, {
         suppressScrollX: true,

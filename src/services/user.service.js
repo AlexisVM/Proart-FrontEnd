@@ -8,6 +8,7 @@ export const userService = {
   getAll,
   getById,
   update,
+  getAllTiposDePrograma,
   delete: _delete
 };
 
@@ -60,6 +61,17 @@ function getAll() {
   );
 }
 
+function getAllTiposDePrograma() {
+  const requestOptions = {
+    method: "GET"
+  };
+
+  return fetch(`${process.env.REACT_APP_API}api/tiposprogramas/`, requestOptions).then(
+    handleResponse
+  );
+}
+
+
 function getById(id) {
   const requestOptions = {
     method: "GET",
@@ -71,6 +83,8 @@ function getById(id) {
     requestOptions
   ).then(handleResponse);
 }
+
+
 
 function register(user) {
   const requestOptions = {

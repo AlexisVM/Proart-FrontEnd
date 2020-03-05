@@ -7,7 +7,8 @@ import GridContainer from "components/Grid/GridContainer.js";
 import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
-
+import { useSelector, useDispatch } from 'react-redux'
+import { userActions } from "../../actions";
 
 const styles = {
   cardCategoryWhite: {
@@ -43,13 +44,32 @@ const useStyles = makeStyles(styles);
 
 export default function Register() {
   const classes = useStyles();
+  const dispatch = useDispatch();
+  const programas = useSelector(state => state.tiposprogramas);
+ 
+  console.log(programas)
+  React.useEffect(() => {
+    dispatch(userActions.getAllTiposDePrograma());
+
+    },[dispatch]);
+
+
   return (
     <GridContainer>
       <GridItem xs={12} sm={12} md={12}>
         <Card>
           <CardHeader color="primary">
             <h4 className={classes.cardTitleWhite}>Inscríbete a un curso</h4>
-
+           <select>
+      {programas.items ? programas.items.map(item => (
+        <option
+          key={item.id}
+          value={item.nombre}
+        >
+          {item.nombre}
+        </option>
+      )): <p>ok</p>}
+    </select>
           </CardHeader>
           <CardBody>
           </CardBody>
