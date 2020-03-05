@@ -1,12 +1,13 @@
+/* eslint-disable react/no-unescaped-entities */
 import React from "react";
 // @material-ui/core components
-import { makeStyles  } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import InputLabel from "@material-ui/core/InputLabel";
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
-import TextField from '@material-ui/core/TextField';
-import Grid from '@material-ui/core/Grid';
+import MenuItem from "@material-ui/core/MenuItem";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
+import TextField from "@material-ui/core/TextField";
+import Grid from "@material-ui/core/Grid";
 // core components
 import GridItem from "components/Grid/GridItem.js";
 import GridContainer from "components/Grid/GridContainer.js";
@@ -16,6 +17,7 @@ import CardHeader from "components/Card/CardHeader.js";
 import CardAvatar from "components/Card/CardAvatar.js";
 import CardBody from "components/Card/CardBody.js";
 import CardFooter from "components/Card/CardFooter.js";
+import { useSelector } from "react-redux";
 
 import avatar from "assets/img/corazon.jpg";
 const styles = {
@@ -39,7 +41,9 @@ const styles = {
 const useStyles = makeStyles(styles);
 
 export default function UserProfile() {
-  const [gender, setGender] = React.useState('');
+  const user = useSelector(state => state.authentication.user);
+  console.log(user);
+  const [gender, setGender] = React.useState(user.sexo);
   const handleChange = event => {
     setGender(event.target.value);
   };
@@ -50,7 +54,9 @@ export default function UserProfile() {
         <GridItem xs={12} sm={12} md={8}>
           <Card>
             <CardHeader color="primary">
-              <h4 className={classes.cardTitleWhite}>Actualiza la información de tu cuenta</h4>
+              <h4 className={classes.cardTitleWhite}>
+                Actualiza la información de tu cuenta
+              </h4>
               <p className={classes.cardCategoryWhite}>Perfil</p>
             </CardHeader>
             <CardBody>
@@ -63,37 +69,48 @@ export default function UserProfile() {
                   </GridContainer >
                 </Grid>*/}
                 <Grid item xs={4}>
-                  <TextField id="name" label="Nombre" fullWidth="true"/>
+                  <TextField id="name" label={user.nombre} fullWidth={true} />
                 </Grid>
                 <Grid item xs={4}>
-                  <TextField id="lastname" label="Apellido Paterno" fullWidth="true"/>
+                  <TextField
+                    id="lastname"
+                    label={user.apellido_paterno}
+                    fullWidth={true}
+                  />
                 </Grid>
                 <Grid item xs={4}>
-                  <TextField id="lastname2" label="Apellido Materno" fullWidth="true"/>
+                  <TextField
+                    id="lastname2"
+                    label={user.apellido_materno}
+                    fullWidth={true}
+                  />
                 </Grid>
                 <Grid item xs={6}>
-                  <TextField id="email" label="Correo/Email" fullWidth="true"/>
+                  <TextField id="email" label={user.email} fullWidth={true} />
                 </Grid>
                 <Grid item xs={3}>
                   <TextField
-                      id="birthdate"
-                      label="Cumpleaños/Birthday"
-                      fullWidth="true"
-                      type="date"
-                      defaultValue="2000-01-01"/>
+                    id="birthdate"
+                    label="Cumpleaños/Birthday"
+                    fullWidth={true}
+                    type="date"
+                    defaultValue={user.cumpleanos}
+                  />
                 </Grid>
                 <Grid item xs={3}>
-                  <FormControl  fullWidth="true">
-                      <InputLabel id="demo-simple-select-label">Genero/Gender</InputLabel>
-                      <Select
-                        labelId="gender"
-                        id="gender"
-                        value={gender}
-                        onChange={handleChange}
-                      >
-                        <MenuItem value={1}>M</MenuItem>
-                        <MenuItem value={2}>F</MenuItem>
-                      </Select>
+                  <FormControl fullWidth={true}>
+                    <InputLabel id="demo-simple-select-label">
+                      Genero/Gender
+                    </InputLabel>
+                    <Select
+                      label="gender"
+                      id="gender"
+                      value={gender}
+                      onChange={handleChange}
+                    >
+                      <MenuItem value={1}>M</MenuItem>
+                      <MenuItem value={2}>F</MenuItem>
+                    </Select>
                   </FormControl>
                 </Grid>
                 {/*<Grid item xs={12}>
@@ -104,26 +121,32 @@ export default function UserProfile() {
                   </GridContainer>
                 </Grid>*/}
                 <Grid item xs={12} sm={5}>
-                  <TextField id="street" label="Calle y número" fullWidth="true"/>
+                  <TextField
+                    id="street"
+                    label="Calle y número"
+                    fullWidth={true}
+                  />
                 </Grid>
                 <Grid item xs={12} sm={4}>
-                  <TextField id="suburb" label="Colonia" fullWidth="true"/>
+                  <TextField id="suburb" label="Colonia" fullWidth={true} />
                 </Grid>
                 <Grid item xs={12} sm={3}>
-                  <TextField id="zipCode" label="Código postal " fullWidth="true"/>
+                  <TextField
+                    id="zipCode"
+                    label="Código postal "
+                    fullWidth={true}
+                  />
                 </Grid>
                 <Grid item xs={4}>
-                  <TextField id="city" label="Ciudad" fullWidth="true"/>
+                  <TextField id="city" label="Ciudad" fullWidth={true} />
                 </Grid>
                 <Grid item xs={4}>
-                  <TextField id="state" label="Estado" fullWidth="true"/>
+                  <TextField id="state" label="Estado" fullWidth={true} />
                 </Grid>
                 <Grid item xs={4}>
-                  <TextField id="country" label="País" fullWidth="true"/>
+                  <TextField id="country" label="País" fullWidth={true} />
                 </Grid>
               </Grid>
-
-
             </CardBody>
             <CardFooter>
               <Button color="primary">Actualizar</Button>
@@ -139,11 +162,11 @@ export default function UserProfile() {
             </CardAvatar>
             <CardBody profile>
               <p className={classes.description}>
-                La información proporcionada será utilizada únicamente por "Ibérica Contemporánea"
-                para identificar a sus participantes, conocer sus niveles, sus instituciones y poder
-                utilizarla para entregar un certificado al finalizar el festival.
+                La información proporcionada será utilizada únicamente por
+                "Ibérica Contemporánea" para identificar a sus participantes,
+                conocer sus niveles, sus instituciones y poder utilizarla para
+                entregar un certificado al finalizar el festival.
               </p>
-
             </CardBody>
           </Card>
         </GridItem>

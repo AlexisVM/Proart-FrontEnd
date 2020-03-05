@@ -16,7 +16,7 @@ ReactDOM.render(
   <Provider store={store}>
     <Router history={history}>
       <Switch>
-        <PrivateRoute path="/admin" component={Admin} />
+        <PrivateRoute path="/inicio" component={Admin} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
         <Redirect from="/" to="/login" />

@@ -17,8 +17,10 @@ import styles from "assets/jss/material-dashboard-react/layouts/adminStyle.js";
 
 import bgImage from "assets/img/sidebar-2.jpg";
 import logo from "assets/img/logo-iberica.png";
+
 import { useSelector, useDispatch } from 'react-redux'
 import { userActions } from "../actions";
+
 //Redux
 //import { Link } from 'react-router-dom';
 
@@ -27,7 +29,7 @@ let ps;
 const switchRoutes = (
   <Switch>
     {routes.map((prop, key) => {
-      if (prop.layout === "/admin") {
+      if (prop.layout === "/inicio") {
         return (
           <Route
             path={prop.layout + prop.path}
@@ -38,7 +40,7 @@ const switchRoutes = (
       }
       return null;
     })}
-    <Redirect from="/admin" to="/admin/dashboard" />
+    <Redirect from="/inicio" to="/inicio/registro" />
   </Switch>
 );
 
@@ -49,14 +51,13 @@ export default function Admin({ ...rest }) {
   const classes = useStyles();
   //const dispatch = useDispatch();
   const user = useSelector(state => state.authentication.user)
-  
 
   // ref to help us initialize PerfectScrollbar on windows devices
   const mainPanel = React.createRef();
   // states and functions
   const [image, setImage] = React.useState(bgImage);
   const [color, setColor] = React.useState("blue");
-  const [fixedClasses, setFixedClasses] = React.useState("dropdown show");
+  const [fixedClasses, setFixedClasses] = React.useState("dropdown ");
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const handleImageClick = image => {
     setImage(image);
@@ -75,7 +76,7 @@ export default function Admin({ ...rest }) {
     setMobileOpen(!mobileOpen);
   };
   const getRoute = () => {
-    return window.location.pathname !== "/admin/maps";
+    return window.location.pathname !== "/inicio/maps";
   };
   const resizeFunction = () => {
     if (window.innerWidth >= 960) {
