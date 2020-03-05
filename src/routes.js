@@ -18,8 +18,8 @@
 // @material-ui/icons
 import Person from "@material-ui/icons/Person";
 import LocationOn from "@material-ui/icons/LocationOn";
-import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
-import PlaylistAddCheckIcon from '@material-ui/icons/PlaylistAddCheck';
+import MonetizationOnIcon from "@material-ui/icons/MonetizationOn";
+import PlaylistAddCheckIcon from "@material-ui/icons/PlaylistAddCheck";
 // core components/views for Admin layout
 import UserProfile from "views/UserProfile/UserProfile.js";
 import TableList from "views/TableList/TableList.js";
@@ -34,7 +34,7 @@ const ibericaRoutes = [
     name: "Registro",
     icon: PlaylistAddCheckIcon,
     component: Register,
-    layout: "/admin"
+    layout: "/inicio"
   },
   {
     path: "/table",
@@ -42,7 +42,7 @@ const ibericaRoutes = [
     rtlName: "قائمة الجدول",
     icon: "content_paste",
     component: TableList,
-    layout: "/admin"
+    layout: "/inicio"
   },
   {
     path: "/user",
@@ -50,9 +50,8 @@ const ibericaRoutes = [
     rtlName: "ملف تعريفي للمستخدم",
     icon: Person,
     component: UserProfile,
-    layout: "/admin"
+    layout: "/inicio"
   },
-
 
   {
     path: "/maps",
@@ -60,7 +59,7 @@ const ibericaRoutes = [
     rtlName: "خرائط",
     icon: LocationOn,
     component: Maps,
-    layout: "/admin"
+    layout: "/inicio"
   },
 
   {
@@ -69,10 +68,8 @@ const ibericaRoutes = [
     rtlName: "خرائط",
     icon: MonetizationOnIcon,
     component: Payments,
-    layout: "/admin"
+    layout: "/inicio"
   }
-
-
 ];
 
 export default ibericaRoutes;

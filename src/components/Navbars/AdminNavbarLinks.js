@@ -85,7 +85,7 @@ export default function AdminNavbarLinks() {
                     <MenuItem
                       onClick={() => {
                         handleLogout();
-                        window.location.href = "http://localhost:8000/login";
+                        window.location.href = "http://localhost:3000/login";
                       }}
                       className={classes.dropdownItem}
                     >

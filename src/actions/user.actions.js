@@ -18,7 +18,7 @@ function login(username, password) {
     userService.login(username, password).then(
       user => {
         dispatch(success(user));
-        history.push("/admin/dashboard");
+        history.push("/inicio/registro");
       },
       error => {
         dispatch(failure(error.toString()));
