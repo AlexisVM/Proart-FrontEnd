@@ -66,7 +66,7 @@ function getAllTiposDePrograma() {
     method: "GET"
   };
 
-  return fetch(`${process.env.REACT_APP_API}api/tiposprogramas/`, requestOptions).then(
+  return fetch(`${process.env.REACT_APP_API}api/programas/`, requestOptions).then(
     handleResponse
   );
 }
