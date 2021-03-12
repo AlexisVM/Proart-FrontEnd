@@ -12,7 +12,7 @@
     "chartist": "0.10.1",
     "classnames": "2.2.6",
     "history": "4.9.0",
-    "jspdf": "^1.5.3",
+    "jspdf": "^2.3.1",
     "jspdf-autotable": "^3.2.11",
     "material-ui-dropzone": "^2.4.7",
     "material-ui-phone-number": "^2.2.5",
